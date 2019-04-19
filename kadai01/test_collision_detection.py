@@ -7,7 +7,6 @@ class TestCollisionDetection(unittest.TestCase):
         from collision_detection import isHit
         from io import StringIO
         buf = StringIO()
-
         value = "\n".join([
             "100 100 70 100",
             "3",

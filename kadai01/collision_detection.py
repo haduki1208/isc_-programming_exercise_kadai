@@ -13,12 +13,16 @@ def __checkCollision(myself: Object, yourself: Object):
     return False
 
 
-def isHit(input_line: str):
-    myData, enemyCount, *enemys = input_line.split("\n")
-    player = Object(*(int(i) for i in myData.split(" ")))
+def __convertCoordinateStrToInt(coordinate: str):
+    return (int(i) for i in coordinate.split(" "))
 
-    # enemyCountを使うルールのため仕方なく使う。
-    for i in range(int(enemyCount)):
-        enemy = Object(*(int(i) for i in enemys[i].split(" ")))
+
+def isHit(input_line: str):
+    myCoordinate, enemyCount, *enemyCoordinateList = input_line.split("\n")
+    enemyCount = int(enemyCount)
+    player = Object(*__convertCoordinateStrToInt(myCoordinate))
+
+    for i in range(enemyCount):
+        enemy = Object(*__convertCoordinateStrToInt(enemyCoordinateList[i]))
         if __checkCollision(player, enemy):
             print(f"敵機{i + 1} が当たり")
