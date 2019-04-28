@@ -27,7 +27,19 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
+}
+
+
+@font-face {
+  font-family: 'Cards';
+  src: url('./fonts/CARDS.TTF') format('truetype');
+}
+
+.trump {
+  font-family: 'Cards';
+  font-size: 48px;
 }

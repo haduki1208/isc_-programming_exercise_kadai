@@ -1,0 +1,15 @@
+@font-face {
+  font-family: "cards";
+  src: url("./fonts/CARDS.TTF") format("truetype");
+}
+
+.cards {
+  display: inline-block;
+  list-style: none;
+  font-family: 'cards';
+  font-size: 96px;
+}
+
+.cards-red {
+  color: red;
+}

@@ -25,10 +25,6 @@ export default class Link extends React.Component {
     this.setState({ class: STATUS.NORMAL });
   }
 
-  add(a, b) {
-    return a + b;
-  }
-
   render() {
     return (
       <a
