@@ -1,4 +1,4 @@
-import Card from './Card';
+import Card from "./Card";
 
 class Deck extends Array {
   constructor() {
@@ -12,6 +12,9 @@ class Deck extends Array {
         this.push(new Card(suit, number));
       }
     }
+    // joker
+    this.push(new Card(4, 0));
+    this.push(new Card(4, 0));
   }
 }
 
