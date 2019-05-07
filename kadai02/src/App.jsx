@@ -2,6 +2,7 @@ import React from "react";
 import Deck from "./Deck";
 // import Card from './Card';
 import { CARD_FONTS } from "./Constants";
+import pokerHandJudge from "./PokerHandJudge";
 import "./App.css";
 
 class App extends React.PureComponent {
@@ -34,14 +35,14 @@ class App extends React.PureComponent {
   };
 
   judgeHand = hand => {
-    const isRoyal = this.__isRoyal(hand);
-    const isStraight = this.__isStraight(hand);
-    const isFlash = this.__isFlash(hand);
-    const isFullHouse = this.__isFullHouse(hand);
-    const is4Card = this.__is4Card(hand);
-    const is3Card = this.__is3Card(hand);
-    const is2Pair = this.__is2Pair(hand);
-    const is1Pair = this.__is1Pair(hand);
+    const isRoyal = pokerHandJudge.isRoyal(hand);
+    const isStraight = pokerHandJudge.isStraight(hand);
+    const isFlash = pokerHandJudge.isFlash(hand);
+    const isFullHouse = pokerHandJudge.isFullHouse(hand);
+    const is4Card = pokerHandJudge.is4Card(hand);
+    const is3Card = pokerHandJudge.is3Card(hand);
+    const is2Pair = pokerHandJudge.is2Pair(hand);
+    const is1Pair = pokerHandJudge.is1Pair(hand);
 
     if (isRoyal && isFlash) {
       this.setState({ result: "ロイヤルストレートフラッシュ" });
@@ -64,65 +65,6 @@ class App extends React.PureComponent {
     } else {
       this.setState({ result: "ハイカード(ブタ)" });
     }
-  };
-
-  __isRoyal = hand => {
-    let royal = [1, 10, 11, 12, 13];
-    for (const hadNumber of hand.map(card => card.number)) {
-      royal = royal.filter(royalNumber => royalNumber !== hadNumber);
-    }
-    return !royal.length;
-  };
-
-  __isStraight = hand => {
-    let isStraight = true;
-    const numbers = hand.map(card => card.number);
-    numbers.reduce((a, c) => {
-      if (a + 1 !== c) {
-        isStraight = false;
-      }
-      return c;
-    });
-    return isStraight;
-  };
-
-  __isFlash = hand => {
-    return new Set(hand.map(card => card.suit)).size === 1;
-  };
-
-  __isFullHouse = hand => {
-    return this.__is3Card(hand) && this.__is1Pair(hand);
-  };
-
-  __is4Card = hand => {
-    return Array.from(this.__getNumberCounter(hand).values()).includes(4);
-  };
-
-  __is3Card = hand => {
-    return Array.from(this.__getNumberCounter(hand).values()).includes(3);
-  };
-
-  __is2Pair = hand => {
-    return (
-      Array.from(this.__getNumberCounter(hand).values()).filter(
-        value => value === 2
-      ).length === 2
-    );
-  };
-
-  __is1Pair = hand => {
-    return Array.from(this.__getNumberCounter(hand).values()).includes(2);
-  };
-
-  __getNumberCounter = hand => {
-    const counter = new Map();
-    for (const card of hand) {
-      counter.set(
-        card.number,
-        counter.get(card.number) ? counter.get(card.number) + 1 : 1
-      );
-    }
-    return counter;
   };
 
   componentDidMount = () => {
