@@ -1,6 +1,6 @@
 import React from "react";
 import Deck from "./Deck";
-// import Card from './Card';
+// import Card from "./Card";
 import { CARD_FONTS } from "./Constants";
 import pokerHandJudge from "./PokerHandJudge";
 import "./App.css";
@@ -35,6 +35,7 @@ class App extends React.PureComponent {
   };
 
   judgeHand = hand => {
+    const is5Card = pokerHandJudge.is5Card(hand);
     const isRoyal = pokerHandJudge.isRoyal(hand);
     const isStraight = pokerHandJudge.isStraight(hand);
     const isFlash = pokerHandJudge.isFlash(hand);
@@ -44,7 +45,9 @@ class App extends React.PureComponent {
     const is2Pair = pokerHandJudge.is2Pair(hand);
     const is1Pair = pokerHandJudge.is1Pair(hand);
 
-    if (isRoyal && isFlash) {
+    if (is5Card) {
+      this.setState({ result: "ファイブカード" });
+    } else if (isRoyal && isFlash) {
       this.setState({ result: "ロイヤルストレートフラッシュ" });
     } else if (isStraight && isFlash) {
       this.setState({ result: "ストレートフラッシュ" });
