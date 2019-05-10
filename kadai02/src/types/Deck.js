@@ -1,4 +1,4 @@
-import Card from "./Card";
+import Card from './Card';
 
 class Deck extends Array {
   constructor() {
@@ -18,4 +18,5 @@ class Deck extends Array {
   }
 }
 
-export default Deck;
+// singleton
+export default new Deck();
