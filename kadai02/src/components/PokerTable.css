@@ -1,6 +1,6 @@
 @font-face {
-  font-family: "cards";
-  src: url("./fonts/CARDS.TTF") format("truetype");
+  font-family: 'cards';
+  src: url('../fonts/CARDS.TTF') format('truetype');
 }
 
 .cards {

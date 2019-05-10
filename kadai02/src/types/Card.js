@@ -1,4 +1,4 @@
-import { SUIT } from "./Constants";
+import { SUIT } from '../constants/Constants';
 
 class Card {
   constructor(suit, number) {
