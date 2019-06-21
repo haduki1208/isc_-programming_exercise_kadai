@@ -1,0 +1,27 @@
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+td {
+  width: 36px;
+  height: 36px;
+  background-color: orange;
+  border: 1px solid black;
+}
+
+.mouseover {
+  background-color: brown;
+}
+
+.path-of-queen {
+  background-color: skyblue;
+}
+
+.can-not-put {
+  background-color: grey !important;
+}
+
+.used {
+  background-color: red !important;
+}
