@@ -18,6 +18,14 @@ const refresh = (): void => {
   canPut = false;
 };
 
+const isGameEnd = () => {
+  if (document.querySelectorAll('.used').length === 8) {
+    alert('クリア');
+  } else if (document.querySelectorAll('.can-not-put').length === 64) {
+    alert('ゲームオーバー');
+  }
+};
+
 const onMouseOver = (e: MouseEvent): void => {
   const cell = <ICell>e.target;
   if (isUsedCell(cell)) {
@@ -48,6 +56,7 @@ const onClick = (e: MouseEvent): void => {
   for (const cell of infectedCell) {
     cell.classList.add(CAN_NOT_PUT);
   }
+  isGameEnd();
   refresh();
 };
 
